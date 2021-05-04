@@ -1,24 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cardview="clr-namespace:CardView;assembly=CardView"
+             BackgroundColor="White"
+             
              x:Class="XamarinPokedex.MainPage">
 
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        
+        <!--margin
+            1 for Left
+            2 for Top
+            3 for Right
+            4 for Bottom-->
+                
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0" HeightRequest="100">
+            <StackLayout>
+                <Label Text="{Binding ApplicationName}"  HorizontalTextAlignment="Center" TextColor="White" FontSize="36" Margin="0, 20, 0, 0"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Entry x:Name="EntrySearch" Placeholder="Search Here" PlaceholderColor="Gray" WidthRequest="280"  Text="{Binding SearchFilter, Mode=TwoWay}"/>
+                    <ImageButton x:Name="ButtonSearch" Source="search.png" WidthRequest="30" HeightRequest="15" Aspect="AspectFit" BackgroundColor="Transparent" Clicked="ButtonSearch_Clicked" />
+                </StackLayout>
+            </StackLayout>
         </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" />
+        
+        <Label Text="{Binding PokemonName}"  HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+
+        <!--<cardview:CardView CardViewHeightRequest="100" CardViewOutlineColor="white" CardViewOutlineColorThickness="2"
+                           Margin="10"
+				   CardViewInnerFrameOutlineColor="Aqua" CardViewInnerFrameOutlineColorThickness="2">
+            <cardview:CardView.CardViewContent>
+                <StackLayout  BackgroundColor="White">
+                    <Label Text="{Binding PokemonName}" TextColor="Red"></Label>
+                </StackLayout>
+            </cardview:CardView.CardViewContent>
+        </cardview:CardView>-->
+        
     </StackLayout>
 
 </ContentPage>
