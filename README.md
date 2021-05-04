@@ -1,3 +1,3 @@
 # XamarinPokedex
 
-![Pokemon Logo](https://www.vhv.rs/dpng/d/539-5394286_pokemon-logo-png-free-pic-pokemon-logo-png.png)
+![Pokemon Logo](https://p.kindpng.com/picc/s/108-1081861_pokemon-logo-png-free-pic-pokemon-trading-card.png)
