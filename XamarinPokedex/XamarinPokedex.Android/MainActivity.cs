@@ -17,7 +17,11 @@ namespace XamarinPokedex.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            //SvgImageRenderer.Init();
+
+            Xamarin.Forms.Svg.Droid.SvgImage.Init(this); //need to write here
+
+            App.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
+            App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
 
             LoadApplication(new App());
         }

@@ -1,32 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:cardview="clr-namespace:CardView;assembly=CardView" xmlns:abstractions="clr-namespace:SVG.Forms.Plugin.Abstractions;assembly=SVG.Forms.Plugin.Abstractions"
-             BackgroundColor="White"
-             
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             BackgroundColor="#121212"             
              x:Class="XamarinPokedex.MainPage">
 
     <StackLayout>
-        
+
         <!--margin
             1 for Left
             2 for Top
             3 for Right
             4 for Bottom-->
-                
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0" HeightRequest="100">
-            <StackLayout>
-                <Label Text="{Binding ApplicationName}"  HorizontalTextAlignment="Center" TextColor="White" FontSize="36" Margin="0, 20, 0, 0"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Entry x:Name="EntrySearch" Placeholder="Search Here" PlaceholderColor="Gray" WidthRequest="280"  Text="{Binding SearchFilter, Mode=TwoWay}"/>
-                    <ImageButton x:Name="ButtonSearch" Source="search.png" WidthRequest="30" HeightRequest="15" Aspect="AspectFit" BackgroundColor="Transparent" Clicked="ButtonSearch_Clicked" />
-                </StackLayout>
-            </StackLayout>
-        </Frame>
 
-        <ActivityIndicator IsRunning="{Binding IsBusy}" />
-        
-        <Label Text="{Binding PokemonName}"  HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+        <yummy:PancakeView  Margin="0"
+            CornerRadius="0,0,50,50"
+            BackgroundColor="#1F1F1F"
+            HeightRequest="200"
+            VerticalOptions="Start">
+            
+        <StackLayout>
+                <Label Text="{Binding ApplicationName}"  HorizontalTextAlignment="Center" TextColor="White" FontSize="36" Margin="0, 40, 0, 0"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Entry x:Name="EntrySearch" Placeholder="Search Here" PlaceholderColor="LightGray" WidthRequest="280" Text="{Binding SearchFilter, Mode=TwoWay}" TextColor="White"  />
+                <ImageButton x:Name="ButtonSearch" Source="search.png" WidthRequest="30" HeightRequest="15" Aspect="AspectFit" BackgroundColor="Transparent" Clicked="ButtonSearch_Clicked" />
+            </StackLayout>
+                <Label Text="{Binding PokemonName}"  HorizontalTextAlignment="End" TextColor="{Binding PokemonColor}" FontSize="36"  Margin="0, 10, 40, 10" />
+            </StackLayout>          
+           
+        </yummy:PancakeView>
+
+        <ScrollView>
+            <StackLayout Margin="10, 10,10,0">
+
+                <yummy:PancakeView  Margin="150, 0,10,0"
+            CornerRadius="10,10,10,10"
+            BackgroundColor="{Binding PokemonColor}"
+            HeightRequest="200"
+            WidthRequest="{Binding ScreenWidth}">
+                    <Image Source="{Binding PokemonImage}" WidthRequest="{Binding ScreenWidth}" Aspect="AspectFill" BackgroundColor="Transparent"  HorizontalOptions="End" />
+                </yummy:PancakeView>
+
+                <!--<yummy:PancakeView  Margin="10, 0,0,0"
+            CornerRadius="10,10,10,10"
+            BackgroundColor="#1F1F1F"
+            HeightRequest="150"
+            WidthRequest="{Binding ScreenWidth}">
+                    <Image Source="{Binding PokemonImage}"  WidthRequest="{Binding ScreenWidth}" HeightRequest="200" Aspect="AspectFill" BackgroundColor="Transparent" />
+        </yummy:PancakeView>-->
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" />
+
+      
 
 
         <!--<abstractions:SvgImage Grid.Row="0" Grid.Column="0" SvgAssembly="{Binding SvgAssembly}" SvgPath="{Binding PokemonImage}" HeightRequest="50" WidthRequest="50" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>-->
@@ -40,7 +64,7 @@
                 </StackLayout>
             </cardview:CardView.CardViewContent>
         </cardview:CardView>-->
-        
+            </StackLayout>
+        </ScrollView>
     </StackLayout>
-
 </ContentPage>
