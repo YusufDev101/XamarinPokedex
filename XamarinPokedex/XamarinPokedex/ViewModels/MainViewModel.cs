@@ -19,7 +19,6 @@ namespace XamarinPokedex.ViewModels
 
         }
 
-
         public async void GetPokemon()
         {
             try
@@ -28,12 +27,10 @@ namespace XamarinPokedex.ViewModels
 
                 // Var call.
                 PokemonObject result = await App.HttpWebRequest.GetPokemon(SearchFilter);
-
-                // Set data.
-                //Console.WriteLine(result);
-
+                             
                 // Set pokemon name.
-                PokemonName = MethodHelpers.FirstCharToUpper(result.name); 
+                PokemonName = MethodHelpers.FirstCharToUpper(result.name);
+                PokemonImage = result.sprites.other.officialartwork.front_default;
             }
             catch (Exception ex)
             {
@@ -88,6 +85,21 @@ namespace XamarinPokedex.ViewModels
             }
         }
 
+        private string _pokemonImage;
+        public string PokemonImage
+        {
+            get
+            {
+                return _pokemonImage;
+            }
+            set
+            {
+                _pokemonImage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:cardview="clr-namespace:CardView;assembly=CardView"
+             xmlns:cardview="clr-namespace:CardView;assembly=CardView" xmlns:abstractions="clr-namespace:SVG.Forms.Plugin.Abstractions;assembly=SVG.Forms.Plugin.Abstractions"
              BackgroundColor="White"
              
              x:Class="XamarinPokedex.MainPage">
@@ -27,6 +27,9 @@
         <ActivityIndicator IsRunning="{Binding IsBusy}" />
         
         <Label Text="{Binding PokemonName}"  HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+
+
+        <!--<abstractions:SvgImage Grid.Row="0" Grid.Column="0" SvgAssembly="{Binding SvgAssembly}" SvgPath="{Binding PokemonImage}" HeightRequest="50" WidthRequest="50" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>-->
 
         <!--<cardview:CardView CardViewHeightRequest="100" CardViewOutlineColor="white" CardViewOutlineColorThickness="2"
                            Margin="10"
