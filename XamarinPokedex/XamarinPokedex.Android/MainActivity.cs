@@ -4,7 +4,8 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
-using SVG.Forms.Plugin.Droid;
+using FFImageLoading.Forms.Platform;
+using FFImageLoading.Svg.Forms;
 
 namespace XamarinPokedex.Droid
 {
@@ -18,10 +19,11 @@ namespace XamarinPokedex.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            Xamarin.Forms.Svg.Droid.SvgImage.Init(this); //need to write here
-
             App.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
             App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
+
+            CachedImageRenderer.Init(true); 
+            var ignore = typeof(SvgCachedImage);
 
             LoadApplication(new App());
         }

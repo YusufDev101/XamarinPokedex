@@ -32,8 +32,11 @@ namespace XamarinPokedex.ViewModels
 
                 // Set pokemon name.
                 PokemonName = MethodHelpers.FirstCharToUpper(result.name);
-                PokemonImage = result.sprites.front_default;
-                PokemonColor = SetColor(MethodHelpers.FirstCharToUpper(result.types[0].type.name));
+                PokemonImage = result.sprites.other.dream_world.front_default;
+                PokemonColor = MethodHelpers.SetColor(MethodHelpers.FirstCharToUpper(result.types[0].type.name));
+                PokemonNumber = result.id;
+                PokemonWeight = "w- " + result.weight;
+                PokemonHeight = " h- " + result.height;
             }
             catch (Exception ex)
             {
@@ -44,54 +47,6 @@ namespace XamarinPokedex.ViewModels
                 IsBusy = false;
             }
         }
-
-        private string SetColor(string name)
-        {
-            switch (name)
-            {
-                case "Bug":
-                    return "#92bc2c";
-                case "Dark":
-                    return "#595761";
-                case "Dragon":
-                    return "#0c69c8";
-                case "Electric":
-                    return "#f2d94e";
-                case "Fairy":
-                    return "#ee90e6";
-                case "Fighting":
-                    return "#d3425f";
-                case "Fire":
-                    return "#fba54c";
-                case "Flying":
-                    return "#a1bbec";
-                case "Ghost":
-                    return "#5f6dbc";
-                case "Grass":
-                    return "#5fbd58";
-                case "Ground":
-                    return "#da7c4d";
-                case "Ice":
-                    return "#75d0c1";
-                case "Normal":
-                    return "#a0a29f";
-                case "Poison":
-                    return "#b763cf";
-                case "Psychic":
-                    return "#fa8581";
-                case "Rock":
-                    return "#c9bb8a";
-                case "Steel":
-                    return "#5695a3";
-                case "Water":
-                    return "#539ddf";
-                default:
-                    return "";
-            }
-        }
-
-
-
 
         private string _pokemonName;
         public string PokemonName
@@ -106,7 +61,6 @@ namespace XamarinPokedex.ViewModels
                 OnPropertyChanged();
             }
         }
-
 
         private string _searchFilter;
         public string SearchFilter
@@ -178,7 +132,50 @@ namespace XamarinPokedex.ViewModels
             }
         }
 
+        private int _pokemonNumber;
+        public int PokemonNumber
+        {
+            get
+            {
+                return _pokemonNumber;
+            }
+            set
+            {
+                _pokemonNumber = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _pokemonWeight;
+        public string PokemonWeight
+        {
+            get
+            {
+                return _pokemonWeight;
+            }
+            set
+            {
+                _pokemonWeight = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _pokemonHeight;
+        public string PokemonHeight
+        {
+            get
+            {
+                return _pokemonHeight;
+            }
+            set
+            {
+                _pokemonHeight = value;
+                OnPropertyChanged();
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
