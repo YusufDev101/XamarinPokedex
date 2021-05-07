@@ -16,21 +16,29 @@
             4 for Bottom-->
 
         <yummy:PancakeView  Margin="0"
-            CornerRadius="0,0,50,50"
+            CornerRadius="0,0,50,0"
             BackgroundColor="#1F1F1F"
             HeightRequest="200"
             VerticalOptions="Start">
 
             <StackLayout>
-                <Label Text="{Binding ApplicationName}"  HorizontalTextAlignment="Center" TextColor="White" FontSize="36" Margin="0, 40, 0, 0"/>
+                <Label Text="{Binding ApplicationName}"  HorizontalTextAlignment="Center" TextColor="{Binding PokemonColor}" FontSize="36" Margin="0, 40, 0, 0"/>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Entry x:Name="EntrySearch" Placeholder="Search Here" PlaceholderColor="LightGray" WidthRequest="280" Text="{Binding SearchFilter, Mode=TwoWay}" TextColor="White"  />
                     <ImageButton x:Name="ButtonSearch" Source="search.png" WidthRequest="30" HeightRequest="15" Aspect="AspectFit" BackgroundColor="Transparent" Clicked="ButtonSearch_Clicked" />
                 </StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" Grid.Row="0" Grid.Column="0" Margin="40, 10, 0, 20"  />
+                    <Label Text="{Binding PokemonName}"  HorizontalTextAlignment="End" TextColor="{Binding PokemonColor}" FontSize="36"  Margin="0, 10, 30, 20"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" />
+            </Grid>
 
-                <ActivityIndicator IsRunning="{Binding IsBusy}" />
-
-                <Label Text="{Binding PokemonName}"  HorizontalTextAlignment="End" TextColor="{Binding PokemonColor}" FontSize="36"  Margin="0, 10, 40, 10" />
             </StackLayout>
 
         </yummy:PancakeView>
@@ -41,16 +49,16 @@
 
                 <StackLayout Orientation="Horizontal" Margin="10, 10,10,0">
 
-                    <StackLayout Orientation="Vertical"   Margin="10, 0, 0, 0" >
+                    <StackLayout Orientation="Vertical" Margin="10, 0, 0, 0" >
 
                         <Frame
-                        Margin="0, 0, 0, 0"
-                        HeightRequest="50"
-                        WidthRequest="200"
-                        Padding="0"
-                        BackgroundColor="#1F1F1F"
-                        CornerRadius="10">
-                            <Label Text="{Binding PokemonNumber}"  HorizontalTextAlignment="Center" TextColor="white" FontSize="18"  Margin="10" />
+                            Margin="0, 0, 0, 0"
+                            HeightRequest="50"
+                            WidthRequest="200"
+                            Padding="0"
+                            BackgroundColor="#1F1F1F"
+                            CornerRadius="10">
+                            <Label Text="{Binding PokemonNumber}"  HorizontalTextAlignment="Center" TextColor="{Binding PokemonColor}" FontSize="18"  Margin="10" VerticalOptions="Center" />
                         </Frame>
 
                         <Frame
@@ -67,13 +75,18 @@
                         </Frame>
 
                         <Frame
-                        Margin="0, 0, 0, 0"
-                        HeightRequest="50"
-                        WidthRequest="350"
-                        Padding="0"
-                        BackgroundColor="#1F1F1F"
-                        CornerRadius="10"/>
-
+                            Margin="0, 0, 0, 0"
+                            HeightRequest="50"
+                            WidthRequest="350"
+                            Padding="0"
+                            BackgroundColor="#1F1F1F"
+                            CornerRadius="10">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                <ffimageloadingsvg:SvgCachedImage WidthRequest="20" HeightRequest="20" Source="{Binding Type1}" />
+                                <ffimageloadingsvg:SvgCachedImage WidthRequest="20" HeightRequest="20" Source="{Binding Type2}" />
+                            </StackLayout>  
+                        </Frame>
+                        
                     </StackLayout>
 
                     <Frame
@@ -88,21 +101,130 @@
                     </Frame>
 
                 </StackLayout>
+              
+                <Grid Margin="40, 20, 0, 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Images"  Margin="0, 0, 0, 0" FontSize="Medium" TextColor="{Binding PokemonColor}" ></Label>
+                        <Label Text="Normal"  Grid.Row="0" Grid.Column="1"   Margin="100, 0, 0, 0"></Label>
+                        <Switch IsToggled="{Binding IsShiny, Mode=TwoWay}" Grid.Row="0" Grid.Column="2" Toggled="Switch_Toggled"  Margin="15, 0, 0, 0"/>
+                        <Label Text="Shiny"  Grid.Row="0" Grid.Column="3" TextColor="Yellow" Margin="10, 0, 0, 0" ></Label>
+                </Grid>
+
+                <BoxView HeightRequest="1" Color="#353C45" Margin="20, 5, 20, 0" />
+                
+                <ScrollView Orientation="Horizontal" 
+                            HorizontalScrollBarVisibility="Never">
+                    
+                    <StackLayout Orientation="Horizontal">
+                    <Frame
+                        Margin="10, 10, 10, 0"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Padding="0"
+                        BackgroundColor="#1F1F1F"
+                        CornerRadius="10">
+                            <Image Source="{Binding PokemonImageFrontMale}" WidthRequest="80" HeightRequest="80" Aspect="AspectFit"></Image>
+                        </Frame>
+                        
+                    <Frame
+                        Margin="10, 10, 10, 0"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Padding="0"
+                        BackgroundColor="#1F1F1F"
+                        CornerRadius="10">
+                            <Image Source="{Binding PokemonImageBackMale}" WidthRequest="80" HeightRequest="80" ></Image>
+                        </Frame>
+                        
+                    <Frame
+                        Margin="10, 10, 10, 0"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Padding="0"
+                        BackgroundColor="#1F1F1F"
+                        CornerRadius="10">
+                            <Image Source="{Binding PokemonImageFrontFemale}" WidthRequest="80" HeightRequest="80" ></Image>
+                        </Frame>
+
+                    <Frame
+                        Margin="10, 10, 10, 0"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Padding="0"
+                        BackgroundColor="#1F1F1F"
+                        CornerRadius="10">
+                            <Image Source="{Binding PokemonImageBackFemale}" WidthRequest="80" HeightRequest="80" ></Image>
+                        </Frame>
+
+                    </StackLayout>
+
+                </ScrollView>
+
+                <BoxView HeightRequest="1" Color="#353C45" Margin="20, 5, 20, 0" />
+
+                <Label Text="Abilities" Margin="30, 20, 20, 0" FontSize="Medium" TextColor="{Binding PokemonColor}" ></Label>
+                
+                <ScrollView Orientation="Horizontal" 
+                            HorizontalScrollBarVisibility="Never">
+                    
+                    <StackLayout Orientation="Horizontal" 
+                                 HorizontalOptions="Center"
+                                 Margin="0, 0, 0, 10">
+
+                        <Frame
+                        Margin="10, 10, 10, 0"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        Padding="0"
+                        BackgroundColor="#1F1F1F"
+                        CornerRadius="10">
+                            <Label Text="{Binding Ability1}" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                        </Frame>
+                        
+                        <Frame
+                        Margin="10, 10, 10, 0"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        Padding="0"
+                        BackgroundColor="#1F1F1F"
+                        CornerRadius="10">
+                            <Label Text="{Binding Ability2}" VerticalOptions="Center" HorizontalOptions="Center" ></Label>
+                        </Frame>
+
+                    </StackLayout>
+
+                </ScrollView>
+
+                <Label Text="Stats"  Margin="40, 5, 20, 0" FontSize="Medium"  TextColor="{Binding PokemonColor}" ></Label>
 
                 <Frame
-                    Margin="10, 20, 10, 0"
+                    Margin="20, 10, 20, 0"
                     HeightRequest="200"
                     WidthRequest="{Binding ScreenWidth}"
                     Padding="0"
                     BackgroundColor="#1F1F1F"
                     CornerRadius="10">
-                    <forms:ChartView x:Name="Chart1"                                 
+                    <forms:ChartView x:Name="Chart1"
                                  BackgroundColor="#1F1F1F"
-                                 Background="#1F1F1F"                                 
+                                 Background="#1F1F1F"        
+                                 Chart="{Binding ChartData}"
                                  HeightRequest="150"/>
                 </Frame>
 
+
+                <BoxView HeightRequest="1" Color="Transparent" Margin="20, 25, 20, 0" />
+                <BoxView HeightRequest="1" Color="#353C45" Margin="20, 25, 20, 0" />
+                <Label Text="Yusuf Khan - v1"  Margin="20, 0, 20, 10" TextColor="DarkGray" ></Label> 
+
             </StackLayout>
+
 
         </ScrollView>
     </StackLayout>

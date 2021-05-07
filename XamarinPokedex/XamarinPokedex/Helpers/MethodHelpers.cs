@@ -61,5 +61,50 @@ namespace XamarinPokedex.Helpers
                     return "";
             }
         }
+
+        public static string SetImage(string name)
+        {
+            switch (name)
+            {
+                case "Bug":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/bug.svg";
+                case "Dark":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/dark.svg";
+                case "Dragon":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/dragon.svg";
+                case "Electric":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/electric.svg";
+                case "Fairy":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/fairy.svg";
+                case "Fighting":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/fighting.svg";
+                case "Fire":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/fire.svg";
+                case "Flying":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/flying.svg";
+                case "Ghost":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/ghost.svg";
+                case "Grass":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/grass.svg";
+                case "Ground":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/ground.svg";
+                case "Ice":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/ice.svg";
+                case "Normal":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/normal.svg";
+                case "Poison":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/poison.svg";
+                case "Psychic":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/psychic.svg";
+                case "Rock":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/rock.svg";
+                case "Steel":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/steel.svg";
+                case "Water":
+                    return "https://duiker101.github.io/pokemon-type-svg-icons/icons/water.svg";
+                default:
+                    return "";
+            }
+        }
     }
 }
