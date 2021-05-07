@@ -25,7 +25,6 @@ namespace XamarinPokedex.Models
         public Type[] types { get; set; }
         public int weight { get; set; }
 
-
         public class Species
         {
             public string name { get; set; }

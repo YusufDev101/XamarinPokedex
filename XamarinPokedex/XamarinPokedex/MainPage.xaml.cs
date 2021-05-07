@@ -42,8 +42,6 @@ namespace XamarinPokedex
             mainViewModel = new MainViewModel();
             BindingContext = mainViewModel;
 
-
-
            
             var chartplaisir = new LineChart()
             {

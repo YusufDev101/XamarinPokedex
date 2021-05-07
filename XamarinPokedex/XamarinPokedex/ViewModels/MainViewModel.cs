@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Xamarin.Forms;
 using XamarinPokedex.Helpers;
 using XamarinPokedex.Models;
 
@@ -30,13 +29,14 @@ namespace XamarinPokedex.ViewModels
                 // Var call.
                 PokemonObject result = await App.HttpWebRequest.GetPokemon(SearchFilter);
 
-                // Set pokemon name.
+                // Set Pokemon name.
                 PokemonName = MethodHelpers.FirstCharToUpper(result.name);
                 PokemonImage = result.sprites.other.dream_world.front_default;
+                //PokemonImage = result.sprites.versions.generationv.blackwhite.front_default;
                 PokemonColor = MethodHelpers.SetColor(MethodHelpers.FirstCharToUpper(result.types[0].type.name));
                 PokemonNumber = result.id;
-                PokemonWeight = "w- " + result.weight;
-                PokemonHeight = " h- " + result.height;
+                PokemonWeight = "w: " + result.weight;
+                PokemonHeight = " h: " + result.height;
             }
             catch (Exception ex)
             {

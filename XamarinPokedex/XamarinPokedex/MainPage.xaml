@@ -61,8 +61,8 @@
                         BackgroundColor="#1F1F1F"
                         CornerRadius="10">
                             <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding PokemonWeight}"  HorizontalTextAlignment="Center" TextColor="white" FontSize="10" Margin="0, 5, 0, 0" />
-                                <Label Text="{Binding PokemonHeight}"  HorizontalTextAlignment="Center" TextColor="white" FontSize="10" />
+                                <Label Text="{Binding PokemonWeight}"  HorizontalTextAlignment="Center" TextColor="white" FontSize="12" Margin="0, 5, 0, 0" />
+                                <Label Text="{Binding PokemonHeight}"  HorizontalTextAlignment="Center" TextColor="white" FontSize="12" />
                             </StackLayout>
                         </Frame>
 
@@ -84,12 +84,13 @@
                     BackgroundColor="#1F1F1F"
                     CornerRadius="10">
                         <ffimageloadingsvg:SvgCachedImage WidthRequest="100" HeightRequest="100" Source="{Binding PokemonImage}"/>
+                        <!--<Image Source="{Binding PokemonImage}" WidthRequest="100" HeightRequest="100" ></Image>-->
                     </Frame>
 
                 </StackLayout>
 
                 <Frame
-                     Margin="10, 20, 10, 0"
+                    Margin="10, 20, 10, 0"
                     HeightRequest="200"
                     WidthRequest="{Binding ScreenWidth}"
                     Padding="0"
@@ -98,10 +99,10 @@
                     <forms:ChartView x:Name="Chart1"                                 
                                  BackgroundColor="#1F1F1F"
                                  Background="#1F1F1F"                                 
-                               HeightRequest="150"/>
+                                 HeightRequest="150"/>
                 </Frame>
 
-            </StackLayout>         
+            </StackLayout>
 
         </ScrollView>
     </StackLayout>
