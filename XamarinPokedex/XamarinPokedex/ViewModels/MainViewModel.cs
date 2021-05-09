@@ -92,7 +92,9 @@ namespace XamarinPokedex.ViewModels
                 var evolutionUrl = pokemonSummaryObject.evolution_chain.url;
                 pokemonEvolutionObject = await App.HttpWebRequest.GetPokemonEvolution(evolutionUrl);
 
-                Evolution1 = App.HttpWebRequest.GertPokemonImage(pokemonEvolutionObject.chain.species.name).Result;
+                Evolution1 = App.HttpWebRequest.GetPokemonImage(pokemonEvolutionObject.chain.species.url).Result;
+                Evolution2 = App.HttpWebRequest.GetPokemonImage(pokemonEvolutionObject.chain.evolves_to[0].species.url).Result;
+                Evolution3 = App.HttpWebRequest.GetPokemonImage(pokemonEvolutionObject.chain.evolves_to[0].evolves_to[0].species.url).Result;
 
                 if (pokemonEvolutionObject.chain.evolves_to[0].species.name != "")
                 {

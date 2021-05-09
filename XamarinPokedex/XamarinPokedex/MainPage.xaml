@@ -179,7 +179,7 @@
                 <ScrollView Orientation="Horizontal" 
                             HorizontalScrollBarVisibility="Never">
 
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                         <Frame
                         Margin="10, 10, 10, 0"
                         HeightRequest="100"

@@ -1,6 +1,7 @@
 ﻿using Flurl.Http;
 using Newtonsoft.Json;
 using System;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using XamarinPokedex.Models;
 
@@ -100,17 +101,17 @@ namespace XamarinPokedex.HttpHelpers
             }
         }
 
-        internal async Task<string> GertPokemonImage(string image)
+        internal async Task<string> GetPokemonImage(string image)
         {
             try
             {
                 // filter the string.
-                var result = image.Substring(image.LastIndexOf(@"\"), -4);
-
-                Console.WriteLine();
+                var result = image.Substring(image.LastIndexOf(@"pokemon-species"), (image.Length - image.LastIndexOf(@"pokemon-species")));
+                Regex rgx = new Regex("[^0-9]");
+                result = rgx.Replace(result, "");
 
                 // Get Pokemon.
-                var buildString = image + ".png";
+                var buildString = HttpHelpers.ImageUrl + result.ToString() + ".png";
 
                 return buildString;
             }
