@@ -16,7 +16,7 @@
             4 for Bottom-->
 
         <yummy:PancakeView  Margin="0"
-            CornerRadius="0,0,50,0"
+            CornerRadius="0,0,80,0"
             BackgroundColor="#1F1F1F"
             HeightRequest="200"
             VerticalOptions="Start">
@@ -101,7 +101,12 @@
                     </Frame>
 
                 </StackLayout>
-              
+
+                <Label Text="Description"  Margin="40, 20, 0, 0" FontSize="Medium" TextColor="{Binding PokemonColor}" />
+                <Label Text="{Binding Description}"  Margin="30, 0, 0, 0" FontSize="Medium" TextColor="White" />
+
+                <BoxView HeightRequest="1" Color="#353C45" Margin="20, 5, 20, 0" />
+
                 <Grid Margin="40, 20, 0, 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -117,7 +122,7 @@
                         <Label Text="Shiny"  Grid.Row="0" Grid.Column="3" TextColor="Yellow" Margin="10, 0, 0, 0" ></Label>
                 </Grid>
 
-                <BoxView HeightRequest="1" Color="#353C45" Margin="20, 5, 20, 0" />
+                <!--<BoxView HeightRequest="1" Color="#353C45" Margin="20, 5, 20, 0" />-->
                 
                 <ScrollView Orientation="Horizontal" 
                             HorizontalScrollBarVisibility="Never">
@@ -166,6 +171,49 @@
                     </StackLayout>
 
                 </ScrollView>
+
+                <BoxView HeightRequest="1" Color="#353C45" Margin="20, 5, 20, 0" />
+
+                <Label Text="Evolutions" Margin="30, 20, 20, 0" FontSize="Medium" TextColor="{Binding PokemonColor}" ></Label>
+
+                <ScrollView Orientation="Horizontal" 
+                            HorizontalScrollBarVisibility="Never">
+
+                    <StackLayout Orientation="Horizontal">
+                        <Frame
+                        Margin="10, 10, 10, 0"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Padding="0"
+                        BackgroundColor="#1F1F1F"
+                        CornerRadius="10">
+                            <Image Source="{Binding Evolution1}" WidthRequest="80" HeightRequest="80" Aspect="AspectFit"></Image>
+                        </Frame>
+
+                        <Frame
+                        Margin="10, 10, 10, 0"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Padding="0"
+                        BackgroundColor="#1F1F1F"
+                        CornerRadius="10">
+                            <Image Source="{Binding Evolution2}" WidthRequest="80" HeightRequest="80" ></Image>
+                        </Frame>
+
+                        <Frame
+                        Margin="10, 10, 10, 0"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Padding="0"
+                        BackgroundColor="#1F1F1F"
+                        CornerRadius="10">
+                            <Image Source="{Binding Evolution3}" WidthRequest="80" HeightRequest="80" ></Image>
+                        </Frame>
+
+                    </StackLayout>
+
+                </ScrollView>
+
 
                 <BoxView HeightRequest="1" Color="#353C45" Margin="20, 5, 20, 0" />
 

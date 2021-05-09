@@ -20,6 +20,9 @@ namespace XamarinPokedex.ViewModels
         #endregion
 
         private PokemonObject pokemonObject;
+        private PokemonSummaryObject pokemonSummaryObject;
+        private PokemonEvolutionObject pokemonEvolutionObject;
+
         public LineChart ChartData;
         private List<Entry> ChartEntry;
 
@@ -27,7 +30,10 @@ namespace XamarinPokedex.ViewModels
         {
             // Get screen width.
             ScreenWidth = Convert.ToInt32(App.ScreenHeight);
+
             pokemonObject = new PokemonObject();
+            pokemonSummaryObject = new PokemonSummaryObject();
+            pokemonEvolutionObject = new PokemonEvolutionObject();
         }
 
         public async Task GetPokemon()
@@ -75,6 +81,23 @@ namespace XamarinPokedex.ViewModels
                 Ability2 = pokemonObject.abilities.Length == 2 ?
                      MethodHelpers.FirstCharToUpper(pokemonObject.abilities[1].ability.name) :
                       "N/A";
+
+                Console.WriteLine(pokemonObject.id);
+
+                // Call summary.
+                pokemonSummaryObject = await App.HttpWebRequest.GetPokemonSummary(pokemonObject.id);
+                Description = pokemonSummaryObject.flavor_text_entries[0].flavor_text;
+
+                // Call Evolution.
+                var evolutionUrl = pokemonSummaryObject.evolution_chain.url;
+                pokemonEvolutionObject = await App.HttpWebRequest.GetPokemonEvolution(evolutionUrl);
+
+                Evolution1 = App.HttpWebRequest.GertPokemonImage(pokemonEvolutionObject.chain.species.name).Result;
+
+                if (pokemonEvolutionObject.chain.evolves_to[0].species.name != "")
+                {
+                    Console.WriteLine("He");
+                }
 
             }
             catch (Exception ex)
@@ -185,7 +208,6 @@ namespace XamarinPokedex.ViewModels
         }
 
         #region Properties
-
 
         private string _pokemonName;
         public string PokemonName
@@ -313,6 +335,19 @@ namespace XamarinPokedex.ViewModels
             }
         }
 
+        private bool _isShiny;
+        public bool IsShiny
+        {
+            get
+            {
+                return _isShiny;
+            }
+            set
+            {
+                _isShiny = value;
+                OnPropertyChanged();
+            }
+        }
 
         #endregion
 
@@ -376,21 +411,7 @@ namespace XamarinPokedex.ViewModels
 
 
         #endregion
-
-        private bool _isShiny;
-        public bool IsShiny
-        {
-            get
-            {
-                return _isShiny;
-            }
-            set
-            {
-                _isShiny = value;
-                OnPropertyChanged();
-            }
-        }
-
+           
         #region Types
 
         private string _type1;
@@ -456,6 +477,70 @@ namespace XamarinPokedex.ViewModels
 
         #endregion
 
+        #region Summary
+
+        private string _description;
+        public string Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                _description = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
+        #region Evolutions
+
+        private string _evolution1;
+        public string Evolution1
+        {
+            get
+            {
+                return _evolution1;
+            }
+            set
+            {
+                _evolution1 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _evolution2;
+        public string Evolution2
+        {
+            get
+            {
+                return _evolution2;
+            }
+            set
+            {
+                _evolution2 = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private string _evolution3;
+        public string Evolution3
+        {
+            get
+            {
+                return _evolution3;
+            }
+            set
+            {
+                _evolution3 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
 
