@@ -100,7 +100,6 @@ namespace XamarinPokedex.ViewModels
                 {
                     Console.WriteLine("He");
                 }
-
             }
             catch (Exception ex)
             {
